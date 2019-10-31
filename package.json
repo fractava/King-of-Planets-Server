@@ -1,0 +1,12 @@
+{
+  "name": "King-of-Planets-Server",
+  "version": "1.0.0",
+  "description": "",
+  "author": "FRACTAVA",
+  "license": "MIT",
+  "main": "app.js",
+  "keywords": [],
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
