@@ -1,0 +1,3 @@
+[submodule "data/shared"]
+	path = data/shared
+	url = https://github.com/fractava/King-of-Planets-shared
