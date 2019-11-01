@@ -1,4 +1,4 @@
-export default class Vector{
+class Vector{
   constructor(x,y){
     this.x= x;
     this.y =y;
@@ -28,4 +28,8 @@ export default class Vector{
     this.normalize();
     this.mult(amount);
   }
+}
+
+module.exports = {
+    Vector: Vector
 }
