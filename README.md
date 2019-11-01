@@ -1,2 +1,2 @@
 # King-of-Planets-Server
-Server for the 2D MOBA Game "King of Planets"
+the Server for: https://github.com/fractava/King-of-Planets
