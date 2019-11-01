@@ -31,5 +31,4 @@ server.listen(port, () => {
 });
 
 setInterval(function(){
-  console.log("test");
 },33);
