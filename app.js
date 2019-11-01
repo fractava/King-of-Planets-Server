@@ -1,7 +1,7 @@
 const http = require('http')
 const fs = require('fs');
 
-require("vector.js");
+require(path.resolve( __dirname, "./vector.js" ));
 
 console.log(typeof Vector);
 
