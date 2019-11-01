@@ -10,10 +10,10 @@ class Map{
     this.height = 0;
     this.obstacles = [];
   }
-  function collides(x,y,w,h){
+  collides(x,y,w,h){
     
   }
-  function loadJSON(path){
+  loadJSON(path){
     let rawdata = fs.readFileSync("data/"+path);
     let json = JSON.parse(rawdata);
   }
