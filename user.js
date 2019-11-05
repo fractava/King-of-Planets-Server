@@ -1,7 +1,7 @@
-var crypto = require("crypto");
+const crypto = require("crypto");
 
 function registerUser(){
-  
+
 }
 
 module.exports = {

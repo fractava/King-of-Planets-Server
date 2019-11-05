@@ -8,6 +8,7 @@ const Map = require(path.resolve( __dirname, "./map.js" ));
 const Obstacle = require(path.resolve( __dirname, "./obstacle.js" ));
 const Entities = require(path.resolve( __dirname, "./entities.js" ));
 const Match = require(path.resolve( __dirname, "./match.js" ));
+const User = require(path.resolve( __dirname, "./user.js" ));
 
 
 // CONFIGS
@@ -15,24 +16,14 @@ const port = 8080;
 const config = JSON.parse(fs.readFileSync(path.resolve( __dirname, './config/config.json')));
 var db;
 
-console.log(config["db"]["host"])
-
-var db_error = false;
-
 //INITIALISE DB
 var db = mysql.createConnection(config["db"]);
-db.connect(function(err) {
-  if (err) db_error = true;
-  console.log("Connected!");
-});
+db.connect();
 
 // SERVER
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  if(db_error){
-    res.write("<p>db error</p>");
-  }
   res.end('<p>Hello World!</p>');
 });
 
