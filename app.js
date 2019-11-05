@@ -15,6 +15,8 @@ const port = 8080;
 const config = JSON.parse(fs.readFileSync(path.resolve( __dirname, './config/config.json')));
 var db;
 
+console.log(config["db"]["host"])
+
 var db_error = false;
 
 //INITIALISE DB
