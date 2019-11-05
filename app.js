@@ -12,12 +12,13 @@ const Match = require(path.resolve( __dirname, "./match.js" ));
 
 // CONFIGS
 const port = 8080;
+const config = JSON.parse(fs.readFileSync(path.resolve( __dirname, './config/config.json')));
 var db;
 
 var db_error = false;
 
 //INITIALISE DB
-var db = mysql.createConnection(JSON.parse(fs.readFileSync('config/config.json'))["db"]);
+var db = mysql.createConnection(config["db"]);
 db.connect(function(err) {
   if (err) db_error = true;
   console.log("Connected!");
