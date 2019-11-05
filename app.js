@@ -17,7 +17,7 @@ var db;
 var db_error = false;
 
 //INITIALISE DB
-var db = mysql.createConnection();
+var db = mysql.createConnection(JSON.parse(fs.readFileSync('config/config.json'))["db"]);
 db.connect(function(err) {
   if (err) db_error = true;
   console.log("Connected!");
