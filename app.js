@@ -14,10 +14,12 @@ const Match = require(path.resolve( __dirname, "./match.js" ));
 const port = 8080;
 var db;
 
+var db_error = false;
+
 //INITIALISE DB
 var db = mysql.createConnection();
 db.connect(function(err) {
-  if (err) throw err;
+  if (err) db_error = true;
   console.log("Connected!");
 });
 
@@ -25,7 +27,10 @@ db.connect(function(err) {
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World!\n');
+  if(db_error){
+    res.write("<p>db error</p>");
+  }
+  res.end('<p>Hello World!</p>');
 });
 
 server.listen(port, () => {
