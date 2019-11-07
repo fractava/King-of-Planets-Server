@@ -9,15 +9,14 @@ const Obstacle = require(path.resolve( __dirname, "./obstacle.js" ));
 const Entities = require(path.resolve( __dirname, "./entities.js" ));
 const Match = require(path.resolve( __dirname, "./match.js" ));
 const User = require(path.resolve( __dirname, "./user.js" ));
-
+const config = require(path.resolve( __dirname, "./config.js" ));
 
 // CONFIGS
 const port = 8080;
-const config = JSON.parse(fs.readFileSync(path.resolve( __dirname, './config/config.json')));
-var db;
+global.db;
 
 //INITIALISE DB
-var db = mysql.createConnection(config["db"]);
+global.db = mysql.createConnection(config["db"]);
 db.connect();
 
 
