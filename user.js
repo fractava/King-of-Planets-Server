@@ -15,7 +15,8 @@ function updateUserData(userId,data){
 function getUserData(userId){
   return new Promise(function(resolve, reject) {
     global.db.query("SELECT data FROM users WHERE id=:userId LIMIT 1;",{userId},function(err, result) {
-      resolve(result);
+      console.log(result["data"]);
+      resolve(result["data"]);
     });
   });
 }
