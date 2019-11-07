@@ -20,6 +20,11 @@ var db;
 var db = mysql.createConnection(config["db"]);
 db.connect();
 
+
+User.getUserData(16).then(function(data){
+  console.log(data);
+});
+
 // SERVER
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
