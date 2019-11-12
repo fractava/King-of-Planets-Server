@@ -17,7 +17,7 @@ global.db;
 
 //INITIALISE DB
 global.db = mysql.createConnection(config["db"]);
-db.connect();
+global.db.connect();
 
 
 User.getUserData(16).then(function(data){
