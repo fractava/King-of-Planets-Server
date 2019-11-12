@@ -2,7 +2,7 @@ const crypto = require("crypto");
 
 function registerUser(secret,data){
   return new Promise(function(resolve, reject) {
-    global.db.query("INSERT INTO users (secret,data) VALUES (:secret,:data);",{secret,data},function(err, result) {
+    global.db.query("INSERT INTO users (secret,data) VALUES (:secret,:data);",{secret,data},function(err, result, fields) {
       resolve(result.insertId);
     });
   });
@@ -15,9 +15,10 @@ function updateUserData(userId,data){
 function getUserData(userId){
   return new Promise(function(resolve, reject) {
     console.log("get User Data got called with id="+userId);
-    global.db.query("SELECT data FROM users WHERE id=:userId LIMIT 1;",{userId},function(err, result) {
+    global.db.query("SELECT data FROM users WHERE id=:userId LIMIT 1;",{userId},function(err, result, fields) {
       console.log("Query complete");
       console.log(result);
+      console.log(JSON.stringify(fields));
       resolve(result);
     });
   });
