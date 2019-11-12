@@ -21,7 +21,7 @@ db.connect();
 
 
 User.getUserData(16).then(function(data){
-  console.log(JSON.stringify(data));
+  console.log(data);
 });
 
 // SERVER
