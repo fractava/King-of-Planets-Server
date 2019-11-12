@@ -21,7 +21,7 @@ global.db.connect();
 
 
 User.getUserData(16).then(function(data){
-  console.log(data);
+  console.log(data[0]);
 });
 
 // SERVER

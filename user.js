@@ -15,7 +15,7 @@ function updateUserData(userId,data){
 function getUserData(userId){
   return new Promise(function(resolve, reject) {
     console.log("get User Data got called with id="+userId);
-    global.db.query("SELECT data FROM users WHERE id=:userId LIMIT 1;",{userId},function(err, result, fields) {
+    global.db.query("SELECT * FROM users WHERE id=:userId LIMIT 1;",{userId},function(err, result, fields) {
       console.log("Query complete");
       console.log(result);
       console.log(JSON.stringify(fields));
