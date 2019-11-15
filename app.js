@@ -17,12 +17,16 @@ global.db;
 
 //INITIALISE DB
 global.db = mysql.createConnection(config["db"]);
-global.db.connect();
-
-
-User.getUserData(16).then(function(data){
-  console.log(data[0]);
+global.db.connect(function(err) {
+  if (err){
+    console.log("DB Connection failed");
+    console.log(err);
+  }else{
+    console.log("DB Connection established");
+  }
 });
+
+//User.updateUserDataProperty(16,["stats","wonFights"],15).then(function(){});
 
 // SERVER
 const server = http.createServer((req, res) => {
