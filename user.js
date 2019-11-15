@@ -7,6 +7,21 @@ function registerUser(secret,data){
     });
   });
 }
+function checkUserSecret(id,secret){
+  return new Promise(function(resolve, reject) {
+    global.db.query("SELECT secret FROM users WHERE id=? LIMIT 1;",[id],function(err, result, fields) {
+      if(err){
+        reject(err);
+      }else{
+        if(result.length < 1){
+          resolve(false);
+        }else{
+          resolve(result[0]["secret"] == secret);
+        }
+      }
+    });
+  });
+}
 function updateUserData(userId,data){
   return new Promise(function(resolve, reject) {
     let json = JSON.stringify(data);
@@ -60,5 +75,6 @@ module.exports = {
     registerUser,
     updateUserData,
     updateUserDataProperty,
-    getUserData
+    getUserData,
+    checkUserSecret
 };
