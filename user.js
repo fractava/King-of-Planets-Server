@@ -57,9 +57,9 @@ function updateUserDataProperty(userId,propertyPath,newValue){
     });
   });
 }
-function getUserData(userId){
+function getUserData(id){
   return new Promise(function(resolve, reject) {
-    global.db.query("SELECT * FROM users WHERE id=? LIMIT 1;",[userId],function(err, result, fields) {
+    global.db.query("SELECT * FROM users WHERE id=? LIMIT 1;",[id],function(err, result, fields) {
       if(err){
         reject(err);
       }else{
