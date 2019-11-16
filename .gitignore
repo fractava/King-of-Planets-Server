@@ -1,2 +1,4 @@
 config/config.json
+config/cert.pem
+config/private-key.pem
 node_modules/

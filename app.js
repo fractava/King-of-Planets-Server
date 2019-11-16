@@ -1,5 +1,5 @@
 // IMPORTS
-const http = require('http')
+const http2 = require('http2')
 const fs = require('fs');
 const path = require('path');
 const mysql = require('mysql');
@@ -29,15 +29,24 @@ global.db.connect(function(err) {
 //User.updateUserDataProperty(16,["stats","wonFights"],15).then(function(){});
 
 // SERVER
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('<p>Hello World!</p>');
+const server = http2.createSecureServer({
+  key: fs.readFileSync(path.resolve( __dirname, './config/private-key.pem')),
+  cert: fs.readFileSync(path.resolve( __dirname, './config/cert.pem'))
 });
 
-server.listen(port, () => {
-  console.log(`Server running at port ${port}`)
+server.on('error', (err) => console.error(err));
+
+server.on('stream', (stream, headers) => {
+  // stream is a Duplex
+  stream.respond({
+    'content-type': 'text/html',
+    ':status': 200
+  });
+  stream.write('<h1>Hello World</h1>');
 });
+
+server.setTimeout(0); //dectivate Timeout
+server.listen(8443);
 
 // Tick
 setInterval(function(){
