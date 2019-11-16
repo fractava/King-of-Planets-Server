@@ -46,7 +46,7 @@ server.on('stream', (stream, headers) => {
 });
 
 server.setTimeout(0); //dectivate Timeout
-server.listen(8443);
+server.listen(443);
 
 // Tick
 setInterval(function(){
